@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ES2024",
+        "sourceMap": true,
+        "outDir": "dist"
+
+    },
+    "include": ["src/**/*", "src/api", "src/config", "src/dbsrc/servicesices", "src/websocket"],
+}
