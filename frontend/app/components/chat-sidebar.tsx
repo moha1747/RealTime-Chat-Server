@@ -32,9 +32,18 @@ interface ChatSidebarProps {
 export function ChatSidebar({ channels, activeChannel, onChannelSelect, userId }: ChatSidebarProps) {
   const router = useRouter()
 
-  const handleLogout = () => {
-    localStorage.removeItem("userId")
-    router.push("/login")
+  const handleLogout = async () => {
+    try {
+      const resoponse = await fetch('http://localhost:8081/auth/logout', {
+        method: 'GET', 
+        credentials: 'include'
+      }) 
+      if (resoponse.ok) {
+        router.push('/login')
+      }
+    } catch (error) {
+        console.error('Logout Failed: ', error)
+    }
   }
 
   return (

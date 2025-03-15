@@ -13,8 +13,8 @@ const ChannelSchema = new Schema<Channel>({
     cname: { type: String, required: true },
     messages: [{ type: mongoose.Types.ObjectId, ref: 'Message' }],
     users: [{ type: mongoose.Types.ObjectId, ref: 'User' }],
-    createdAt: {type: Date, required: true}
+    createdAt: {type: Date, default: Date.now()}
 }, { timestamps: true })
 
-const ChannelModel = mongoose.model<Channel>('User', ChannelSchema)
+const ChannelModel = mongoose.model<Channel>('Channel', ChannelSchema)
 export default ChannelModel

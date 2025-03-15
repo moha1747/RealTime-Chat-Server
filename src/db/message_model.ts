@@ -1,8 +1,8 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose"
 
 interface Reaction {
-    user: mongoose.Types.ObjectId;
-    emoji: string;
+    user: mongoose.Types.ObjectId
+    emoji: string
 }
 
 interface Message extends Document {

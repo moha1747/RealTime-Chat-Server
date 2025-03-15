@@ -12,9 +12,9 @@ const UserSchema = new Schema<User>({
     email: { type: String, required: true, unique: true }, 
     password: { type: String, required: true }, 
     channels: [{
-        type: mongoose.Types.ObjectId, ref: 'Channel'
+        type: mongoose.Types.ObjectId, ref: 'Channel', default: []
      }]
 })
 
-const UserModel = mongoose.model<User>('User', UserSchema)
+const UserModel = mongoose.models.User || mongoose.model<User>('User', UserSchema)
 export default UserModel

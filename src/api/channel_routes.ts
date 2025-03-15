@@ -3,18 +3,18 @@
 import ChannelModel from "../db/channel_model.ts"
 import { channelUsers, broadcastToChannel } from "../websocket/manager.ts"
 import express from "express"
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 
 interface CreateChannelPayload {
-    event: string;
-    userId: string;
-    cname: string;
+    event: string
+    userId: string
+    cname: string
 }
 
 interface ListChannelPayload {
-    event: string;
-    userId: string;
+    event: string
+    userId: string
 }
 
 
@@ -27,7 +27,7 @@ export const createChannel = async (payload: CreateChannelPayload, ws: WebSocket
             console.log("Missing user Id or channel name")
             return
         }
-        const channelExists = await ChannelModel.findOne({ cname });
+        const channelExists = await ChannelModel.findOne({ cname })
         if (channelExists) {
             console.log("Channel already exists")
             return
@@ -46,10 +46,10 @@ export const createChannel = async (payload: CreateChannelPayload, ws: WebSocket
             createdBy: userId, 
             users: [userId]
         })
-        console.log(`Channel '${cName}' created by user '${userId}'`);
+        console.log(`Channel '${cName}' created by user '${userId}'`)
     } catch (error) {
         console.log(error)
-        console.error("Error creating channel:", error);
+        console.error("Error creating channel:", error)
     }
 }
 
